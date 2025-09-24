@@ -25,3 +25,11 @@ Not hosted. Run locally at http://localhost:3000
 - PUT  /emp/employees/:eid (200)
 - DELETE /emp/employees?eid=... (204)
 
+## Notes
+
+- **Auth toggle:** `REQUIRE_AUTH=false` by default. Set `REQUIRE_AUTH=true` (and define `JWT_SECRET`) to enforce JWT on all `/api/v1/emp/*` routes.
+- **Error shape:** Responses on failure follow  
+  `{ "status": false, "message": "<reason>", "errors": [ ... ] }` (the `errors` array appears for validation errors).
+- **Health check:** `GET /` returns `{ "message": "API up" }`.
+
+
