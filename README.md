@@ -1,9 +1,20 @@
-# COMP3123 – Assignment 1 (Backend, Node/Express/MongoDB)
+## How to Run Locally
+1) Start Mongo (Docker): docker start comp3095-mongodb
+2) Copy .env.example to .env and set:
+   PORT=3000
+   MONGO_URI=mongodb://localhost:27017/comp3123_assigment1
+   JWT_SECRET=replace_me
+3) npm install
+4) npm run dev  
+DB name: comp3123_assigment1
 
-## Run
-1. Copy `.env.example` to `.env` and fill values.
-2. `npm i`
-3. `npm run dev` (http://localhost:3000)
+## Test Credentials (for marking)
+Email: johndoe@example.com
+Password: password123
+
+## Hosting
+Not hosted. Run locally at http://localhost:3000
+
 
 ## Endpoints (base: /api/v1)
 - POST /user/signup (201)
@@ -14,4 +25,3 @@
 - PUT  /emp/employees/:eid (200)
 - DELETE /emp/employees?eid=... (204)
 
-> DB name: `comp3123_assigment1`
