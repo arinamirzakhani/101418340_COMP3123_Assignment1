@@ -1,12 +1,36 @@
 ## How to Run Locally
-1) Start Mongo (Docker): docker start comp3095-mongodb
-2) Copy .env.example to .env and set:
-   PORT=3000
-   MONGO_URI=mongodb://localhost:27017/comp3123_assigment1
-   JWT_SECRET=replace_me
-3) npm install
-4) npm run dev  
-DB name: comp3123_assigment1
+docker pull mongo:7.0
+docker volume create comp3123_mongo_data
+
+docker run -d --name comp3095-mongodb -p 27017:27017 -v comp3123_mongo_data:/data/db -e MONGO_INITDB_DATABASE=comp3123_assigment1 mongo:7.0
+
+Start Mongo (Docker): docker start comp3095-mongodb
+
+Copy envs: cp .env.example .env and set
+
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/comp3123_assigment1
+JWT_SECRET=replace_me
+REQUIRE_AUTH=false
+
+
+Install deps: npm install
+
+Run API: npm run dev → Base URL: http://localhost:3000
+
+Health: GET / → {"message":"API up"}, GET /health → ok
+
+(Optional) Verify DB in Docker (for screenshots):
+
+docker exec -it comp3095-mongodb mongosh
+
+Then run:
+
+use comp3123_assigment1
+show collections
+db.users.findOne()
+db.employees.findOne()
+exit
 
 ## Test Credentials (for marking)
 Email: johndoe@example.com
